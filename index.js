@@ -113,7 +113,7 @@ function createNewTarget(){
 
 
     //generate a random number to start with
-    let value= Math.floor(Math.random()*(4+Number(winCount.textContent)))+1;
+    let value= Math.floor(Math.random()*(10+Number(winCount.textContent)))+1;
     finalTargetCount += value;
 
     //randomly assign the first random number to a button
@@ -164,7 +164,7 @@ function createNewTarget(){
             let randomButton = unusedButtons[randomIndex];
 
             //apply a random operation and amount
-            let randomIncrement = Math.floor(Math.random()*(4+Number(winCount.textContent)))+1;
+            let randomIncrement = Math.floor(Math.random()*(10+Number(winCount.textContent)))+1;
             switch (Math.floor(Math.random()*3)){
                 case (0):
                     finalTargetCount += randomIncrement;
@@ -328,4 +328,8 @@ function undoOperation(){
 
     //clear the latest entry in the map
     selectedButtons.delete(key);
+
+    if (selectedButtons.size === 0 && current.textContent === "0") {
+        current.textContent = "";
+    }
 }
