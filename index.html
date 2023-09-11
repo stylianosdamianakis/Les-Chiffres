@@ -5,12 +5,17 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Numbers Game</title>
+    <title>Les Chiffres</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
 
-    <h1 class="header">Numbers Game</h1>
+    <h1 class="header">Les Chiffres</h1>
+
+    <div class="wins-row">
+      <p class="win-text">Wins: </p>
+      <p class="win-count">0</p>
+    </div>
 
     <div class="number-matrix">
       <div class="number-rows">
@@ -37,12 +42,14 @@
     </div>
 
     <div class="operations-row">
-
       <button class="addition">+</button>
       <button class="subtraction">-</button>
       <button class="multiplication">X</button>
       <button class="division">/</button>
+    </div>
 
+    <div class="undo-row">
+      <button class="undo-button"><strong>UNDO</strong></button>
     </div>
 
     <script src="index.js"></script>

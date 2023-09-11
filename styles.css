@@ -4,13 +4,14 @@ html {background-color: rgb(150,150,150);}
     font-size: 100px;
     text-align: center;
     margin: 0;
-    padding-bottom: 130px;
+    padding-bottom: 50px;
     font-family: "Times New Roman", serif;
 }
 
+.wins-row{text-align: center; padding-bottom: 10px}
 .row-one{text-align: center;}
 .row-two{text-align: center;}
-.row-three{text-align: center; padding-bottom: 30px}
+.row-three{text-align: center; padding-bottom: 20px}
 .operations-row{text-align: center}
 
 .target-number{
@@ -125,4 +126,27 @@ html {background-color: rgb(150,150,150);}
     height: 80px;
     font-size: 50px;
     font-family: "Times New Roman", serif;
+}
+
+.undo-row{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.undo-button{
+    font-size: 50px;
+    border-color: black;
+    font-family: "Times New Roman", serif;
+}
+
+.win-text{
+    display: inline-block;
+    font-size: 30px;
+    margin: 0;
+}
+
+.win-count{
+    display: inline-block;
+    font-size: 30px;
+    margin: 0;
 }

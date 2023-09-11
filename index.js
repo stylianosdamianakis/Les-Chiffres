@@ -11,6 +11,8 @@ const addButton = document.querySelector(".addition");
 const subtractButton = document.querySelector(".subtraction");
 const multiplyButton = document.querySelector(".multiplication");
 const divideButton = document.querySelector(".division");
+const undoButton = document.querySelector(".undo-button");
+const winCount = document.querySelector(".win-count");
 
 
 //storing the used buttons and operations
@@ -24,16 +26,17 @@ createNewTarget();
 
 
 //event listeners
-buttonOne.addEventListener('click', function(e) {updateCurrentNumber(e.target)});
-buttonTwo.addEventListener('click', function(e) {updateCurrentNumber(e.target)});
-buttonThree.addEventListener('click', function(e) {updateCurrentNumber(e.target)});
-buttonFour.addEventListener('click', function(e) {updateCurrentNumber(e.target)});
-buttonFive.addEventListener('click', function(e) {updateCurrentNumber(e.target)});
-buttonSix.addEventListener('click', function(e) {updateCurrentNumber(e.target)});
+buttonOne.addEventListener('click', function(e) {updateCurrentNumber(e.target);});
+buttonTwo.addEventListener('click', function(e) {updateCurrentNumber(e.target);});
+buttonThree.addEventListener('click', function(e) {updateCurrentNumber(e.target);});
+buttonFour.addEventListener('click', function(e) {updateCurrentNumber(e.target);});
+buttonFive.addEventListener('click', function(e) {updateCurrentNumber(e.target);});
+buttonSix.addEventListener('click', function(e) {updateCurrentNumber(e.target);});
 addButton.addEventListener('click', function(e) {updateOperations("addition", e.target);});
 subtractButton.addEventListener('click', function(e) {updateOperations("subtraction", e.target);});
 multiplyButton.addEventListener('click', function(e) {updateOperations("multiplication", e.target);});
 divideButton.addEventListener('click', function(e) {updateOperations("division", e.target);});
+undoButton.addEventListener('click', function (e) {undoOperation();});
 
 
 //check if the target and current numbers match
@@ -42,10 +45,30 @@ function checkIfCorrect(){
 }
 
 
+//resets all data
+function resetAllData(){
+
+    //reset the variables
+    selectedButtons.clear();
+    selectedOperation = null;
+    current.textContent = "";
+
+    //change the style of all buttons back to default
+    buttonOne.style.backgroundColor = "rgb(255,255,255)";
+    buttonTwo.style.backgroundColor = "rgb(255,255,255)";
+    buttonThree.style.backgroundColor = "rgb(255,255,255)";
+    buttonFour.style.backgroundColor = "rgb(255,255,255)";
+    buttonFive.style.backgroundColor = "rgb(255,255,255)";
+    buttonSix.style.backgroundColor = "rgb(255,255,255)";
+    addButton.style.backgroundColor = "rgb(255,255,255)";
+    subtractButton.style.backgroundColor = "rgb(255,255,255)";
+    multiplyButton.style.backgroundColor = "rgb(255,255,255)";
+    divideButton.style.backgroundColor = "rgb(255,255,255)";
+}
+
+
 //updates the selected operation and all the operation button styles
 function updateOperations(operation, eventTarget){
-
-    selectedOperation = null;
 
     //change the style of all operations back to default
     addButton.style.backgroundColor = "rgb(255,255,255)";
@@ -53,8 +76,9 @@ function updateOperations(operation, eventTarget){
     multiplyButton.style.backgroundColor = "rgb(255,255,255)";
     divideButton.style.backgroundColor = "rgb(255,255,255)";
 
-    //if there is no eventTarget return
-    if (eventTarget == null){
+    //if there is no eventTarget or if the same operation is selected, return
+    if (eventTarget == null || selectedOperation === operation){
+        selectedOperation = null;
         return;
     }
 
@@ -80,13 +104,16 @@ function updateOperations(operation, eventTarget){
 //create a new target number
 function createNewTarget(){
 
+    //clear previous data
+    resetAllData();
+
     //keep track of which buttons have been used and the final target count
     let unusedButtons= [1,2,3,4,5,6];
     let finalTargetCount= 0;
 
 
     //generate a random number to start with
-    let value= Math.floor(Math.random()*21);
+    let value= Math.floor(Math.random()*(4+Number(winCount.textContent)))+1;
     finalTargetCount += value;
 
     //randomly assign the first random number to a button
@@ -137,7 +164,7 @@ function createNewTarget(){
             let randomButton = unusedButtons[randomIndex];
 
             //apply a random operation and amount
-            let randomIncrement = Math.floor(Math.random()*34)+1;
+            let randomIncrement = Math.floor(Math.random()*(4+Number(winCount.textContent)))+1;
             switch (Math.floor(Math.random()*3)){
                 case (0):
                     finalTargetCount += randomIncrement;
@@ -253,6 +280,11 @@ function updateCurrentNumber(eventTarget){
 
     //create new numbers if the solution is correct
     if (checkIfCorrect() && selectedButtons.size === 6){
+        winCount.textContent = String(Number(winCount.textContent) + 1);
+        createNewTarget();
+
+    //create new numbers if the solution is incorrect
+    } else if (selectedButtons.size === 6) {
         createNewTarget();
     }
 }
