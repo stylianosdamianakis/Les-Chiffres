@@ -36,7 +36,7 @@ addButton.addEventListener('click', function(e) {updateOperations("addition", e.
 subtractButton.addEventListener('click', function(e) {updateOperations("subtraction", e.target);});
 multiplyButton.addEventListener('click', function(e) {updateOperations("multiplication", e.target);});
 divideButton.addEventListener('click', function(e) {updateOperations("division", e.target);});
-undoButton.addEventListener('click', function (e) {undoOperation();});
+undoButton.addEventListener('click', function () {undoOperation();});
 
 
 //check if the target and current numbers match
@@ -249,19 +249,19 @@ function updateCurrentNumber(eventTarget){
             current.textContent = String(parseInt(current.textContent) + parseInt(eventTarget.textContent));
             selectedButtons.set(eventTarget, ["addition", parseInt(eventTarget.textContent)]);
             eventTarget.style.backgroundColor = "rgb(128,128,128)";
-            updateOperations("addition", null)
+            updateOperations("addition", null);
             break;
         case "subtraction":
             current.textContent = String(parseInt(current.textContent) - parseInt(eventTarget.textContent));
             selectedButtons.set(eventTarget, ["subtraction", parseInt(eventTarget.textContent)]);
             eventTarget.style.backgroundColor = "rgb(128,128,128)";
-            updateOperations("subtraction", null)
+            updateOperations("subtraction", null);
             break;
         case "multiplication":
             current.textContent = String(parseInt(current.textContent) * parseInt(eventTarget.textContent));
             selectedButtons.set(eventTarget, ["multiplication", parseInt(eventTarget.textContent)]);
             eventTarget.style.backgroundColor = "rgb(128,128,128)";
-            updateOperations("multiplication", null)
+            updateOperations("multiplication", null);
             break;
         case "division":
 
@@ -273,7 +273,7 @@ function updateCurrentNumber(eventTarget){
             current.textContent = String(parseInt(current.textContent) / parseInt(eventTarget.textContent));
             selectedButtons.set(eventTarget, ["division", parseInt(eventTarget.textContent)]);
             eventTarget.style.backgroundColor = "rgb(128,128,128)";
-            updateOperations("division", null)
+            updateOperations("division", null);
             break;
     }
 
@@ -293,4 +293,39 @@ function updateCurrentNumber(eventTarget){
 //undo the last step
 function undoOperation(){
 
+    //if there is no operation to undo, return
+    if (selectedButtons.size === 0){
+        return;
+    }
+
+    //get the latest operation information
+    let operationInfo = Array.from(selectedButtons.values())[selectedButtons.size-1];
+    let key = Array.from(selectedButtons.keys())[selectedButtons.size-1];
+
+    //undo the previous operation
+    switch (operationInfo[0]) {
+
+        case "addition":
+            current.textContent = String(parseInt(current.textContent) - parseInt(key.textContent));
+            key.style.backgroundColor = "rgb(255,255,255)";
+            break;
+        case "subtraction":
+            current.textContent = String(parseInt(current.textContent) + parseInt(key.textContent));
+            key.style.backgroundColor = "rgb(255,255,255)";
+            break;
+        case "multiplication":
+            current.textContent = String(parseInt(current.textContent) / parseInt(key.textContent));
+            key.style.backgroundColor = "rgb(255,255,255)";
+            break;
+        case "division":
+            current.textContent = String(parseInt(current.textContent) * parseInt(key.textContent));
+            key.style.backgroundColor = "rgb(255,255,255)";
+            break;
+    }
+
+    //update the buttons
+    updateOperations(null, null);
+
+    //clear the latest entry in the map
+    selectedButtons.delete(key);
 }
