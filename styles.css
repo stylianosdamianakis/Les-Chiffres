@@ -34,13 +34,15 @@ html, body {
     font-size: 1.5em;
 }
 
-.row {
-    margin-bottom: 15px;
+.number-matrix {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.button-row button {
-    display: inline-block;
-    margin: 5px;
+.button-row {
+    display: flex;
+    justify-content: center;
 }
 
 .number-button, .operation-button, .undo-button {
@@ -53,6 +55,7 @@ html, body {
     font-size: 1.5em;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin: 5px;
 }
 
 .number-button:hover, .operation-button:hover, .undo-button:hover {
@@ -71,6 +74,10 @@ html, body {
     margin-top: 20px;
 }
 
+.selected {
+    background-color: #357abd; /* Darker shade of blue for selected buttons */
+}
+
 /* Responsive Design */
 @media (max-width: 600px) {
     .container {
@@ -82,8 +89,4 @@ html, body {
         width: 50px;
         height: 50px;
     }
-}
-
-.selected {
-    background-color: #357abd;
 }
