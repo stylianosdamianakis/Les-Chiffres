@@ -1,57 +1,52 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Les Chiffres</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Chiffres</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
 
-    <h1 class="header">Les Chiffres</h1>
+<div class="container">
+  <h1 class="header">Les Chiffres</h1>
 
-    <div class="wins-row">
-      <p class="win-text">Wins: </p>
-      <p class="win-count">0</p>
+  <div class="game-area">
+    <div class="target-row">
+      <p class="target-number">Target: <span class="target-value"></span></p>
     </div>
 
     <div class="number-matrix">
-      <div class="number-rows">
+      <div class="row button-row">
+        <button class="number-button">1</button>
+        <button class="number-button">2</button>
+        <button class="number-button">3</button>
+      </div>
 
-        <div class="row-one">
-          <p class="target-number"></p>
-          <p class="equals">&nbsp=&nbsp</p>
-          <p class="current-number"></p>
-        </div>
-
-        <div class="row-two">
-          <button class="button-one">1</button>
-          <button class="button-two">2</button>
-          <button class="button-three">3</button>
-        </div>
-
-        <div class="row-three">
-          <button class="button-four">4</button>
-          <button class="button-five">5</button>
-          <button class="button-six">6</button>
-        </div>
-
+      <div class="row button-row">
+        <button class="number-button">4</button>
+        <button class="number-button">5</button>
+        <button class="number-button">6</button>
       </div>
     </div>
 
     <div class="operations-row">
-      <button class="addition">+</button>
-      <button class="subtraction">-</button>
-      <button class="multiplication">X</button>
-      <button class="division">/</button>
+      <button class="operation-button addition">+</button>
+      <button class="operation-button subtraction">-</button>
+      <button class="operation-button multiplication">X</button>
+      <button class="operation-button division">/</button>
     </div>
 
     <div class="undo-row">
-      <button class="undo-button"><strong>UNDO</strong></button>
+      <button class="undo-button">UNDO</button>
     </div>
 
-    <script src="index.js"></script>
-  </body>
+    <div class="wins-row">
+      <p class="win-text">Wins: <span class="win-count">0</span></p>
+    </div>
+  </div>
+</div>
+
+<script src="index.js"></script>
+</body>
 </html>

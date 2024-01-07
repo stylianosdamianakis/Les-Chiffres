@@ -1,152 +1,89 @@
-html {background-color: rgb(150,150,150);}
-
-.header{
-    font-size: 100px;
+html, body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
     text-align: center;
-    margin: 0;
-    padding-bottom: 50px;
-    font-family: "Times New Roman", serif;
 }
 
-.wins-row{text-align: center; padding-bottom: 10px}
-.row-one{text-align: center;}
-.row-two{text-align: center;}
-.row-three{text-align: center; padding-bottom: 20px}
-.operations-row{text-align: center}
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
 
-.target-number{
-    font-size: 50px;
-    font-family: "Times New Roman", serif;
-    margin: 0;
-    padding-bottom: 10px;
+.header {
+    font-size: 2.5em;
+    color: #4a90e2;
+    margin-bottom: 20px;
+}
+
+.game-area {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 20px;
+}
+
+.target-row {
+    margin-bottom: 20px;
+}
+
+.target-number {
+    font-size: 1.5em;
+}
+
+.row {
+    margin-bottom: 15px;
+}
+
+.button-row button {
     display: inline-block;
+    margin: 5px;
 }
 
-.equals{
-    font-size: 50px;
-    font-family: "Times New Roman", serif;
-    margin: 0;
-    padding-bottom: 10px;
-    display: inline-block;
-}
-
-.current-number{
-    font-size: 50px;
-    font-family: "Times New Roman", serif;
-    margin: 0;
-    padding-bottom: 10px;
-    display: inline-block;
-}
-
-.button-one{
+.number-button, .operation-button, .undo-button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
     border-radius: 50%;
-    border-color: black;
-    width: 100px;
-    height: 100px;
-    font-size: 50px;
-    font-family: "Times New Roman", serif;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.button-two{
-    border-radius: 50%;
-    border-color: black;
-    width: 100px;
-    height: 100px;
-    font-size: 50px;
-    font-family: "Times New Roman", serif;
+.number-button:hover, .operation-button:hover, .undo-button:hover {
+    background-color: #357abd;
 }
 
-.button-three{
-    border-radius: 50%;
-    border-color: black;
-    width: 100px;
-    height: 100px;
-    font-size: 50px;
-    font-family: "Times New Roman", serif;
+.undo-button {
+    width: auto;
+    padding: 0 20px;
+    border-radius: 20px;
+    margin-top: 20px;
 }
 
-.button-four{
-    border-radius: 50%;
-    border-color: black;
-    width: 100px;
-    height: 100px;
-    font-size: 50px;
-    font-family: "Times New Roman", serif;
+.wins-row {
+    font-size: 1.2em;
+    margin-top: 20px;
 }
 
-.button-five{
-    border-radius: 50%;
-    border-color: black;
-    width: 100px;
-    height: 100px;
-    font-size: 50px;
-    font-family: "Times New Roman", serif;
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .number-button, .operation-button, .undo-button {
+        width: 50px;
+        height: 50px;
+    }
 }
 
-.button-six{
-    border-radius: 50%;
-    border-color: black;
-    width: 100px;
-    height: 100px;
-    font-size: 50px;
-    font-family: "Times New Roman", serif;
-}
-
-.addition{
-    border-radius: 50%;
-    border-color: black;
-    width: 80px;
-    height: 80px;
-    font-size: 50px;
-    font-family: "Times New Roman", serif;
-}
-
-.subtraction{
-    border-radius: 50%;
-    border-color: black;
-    width: 80px;
-    height: 80px;
-    font-size: 50px;
-    font-family: "Times New Roman", serif;
-}
-
-.multiplication{
-    border-radius: 50%;
-    border-color: black;
-    width: 80px;
-    height: 80px;
-    font-size: 50px;
-    font-family: "Times New Roman", serif;
-}
-
-.division{
-    border-radius: 50%;
-    border-color: black;
-    width: 80px;
-    height: 80px;
-    font-size: 50px;
-    font-family: "Times New Roman", serif;
-}
-
-.undo-row{
-    text-align: center;
-    padding-top: 20px;
-}
-
-.undo-button{
-    font-size: 50px;
-    border-color: black;
-    font-family: "Times New Roman", serif;
-}
-
-.win-text{
-    display: inline-block;
-    font-size: 30px;
-    margin: 0;
-}
-
-.win-count{
-    display: inline-block;
-    font-size: 30px;
-    margin: 0;
+.selected {
+    background-color: #357abd;
 }
